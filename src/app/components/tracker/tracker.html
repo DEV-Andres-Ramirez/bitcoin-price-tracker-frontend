@@ -1,0 +1,24 @@
+<div class="tracker-container">
+  <div class="card">
+    <h2>💰 Bitcoin Price Tracker</h2>
+    <p class="auto-refresh">⏳ Auto-refreshing every <span>30 seconds</span></p>
+
+    @if (loading) {
+    <div class="loading">
+      <div class="spinner"></div>
+      Fetching latest price...
+    </div>
+    } @if (priceUsd !== null && !loading) {
+    <div class="price">
+      <span class="currency">USD ₿</span>
+      <span class="value">{{ priceUsd | number : '1.2-2' }}</span>
+    </div>
+    }
+
+    <button (click)="manualRefresh()">🔄 Refresh Now</button>
+
+    @if (lastUpdated) {
+    <p class="updated-time">Last update: {{ lastUpdated | date : 'shortTime' }}</p>
+    }
+  </div>
+</div>
